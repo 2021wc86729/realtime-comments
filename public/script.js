@@ -7,7 +7,8 @@ const messageInput = document.getElementById('message-input');
 
 //2. Create a WebSocket connection to our Server
 //Use 'ws' for http and 'wss' for https
-const socket = new WebSocket('ws://localhost:8080');
+const host = window.location.origin.replace(/^http/, 'ws');
+const socket = new WebSocket(host);
 //Alistener for when the connection is established
 socket.onopen=(event)=>{
     console.log('✅ WebSocket connection established.');
@@ -72,3 +73,4 @@ function addCommentToDOM(comment) {
 function escapeHTML(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 }
+
